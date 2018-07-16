@@ -17,6 +17,50 @@
       with (processingInstance) {
         size(400, 400);
         frameRate(30);
+
+        // drawing of a bear
+
+        // colors
+        var blackColor = color(0, 0, 0);
+        var whiteColor = color(255, 255, 255);
+
+        // position variables
+        var x = 200;
+        var y = 200;
+
+        // background
+        background(whiteColor);
+        noStroke();
+        // black circle background
+        fill(blackColor);
+        var backgroundSize = 300;
+        ellipse(x, y, backgroundSize, backgroundSize);
+
+        // shoulders
+        fill(whiteColor);
+        var shouldersW = 254;
+        var shouldersH = 100;
+        ellipse(x, y + 136, shouldersW, shouldersH);
+
+        // face
+        var faceSize = 185;
+        ellipse(x, y + 30, faceSize, faceSize);
+
+        // ears
+        var earSize = 50;
+        ellipse(x - 70, y - 30, earSize, earSize); // right ear
+        ellipse(x + 70, y - 30, earSize, earSize); // left ear
+
+        // nose
+        fill(blackColor);
+        var noseSize = 25;
+        ellipse(x, y + 70, noseSize, noseSize);
+
+        // eyes
+        var eyeSize = 15;
+        ellipse(x - 20, y + 40, eyeSize, eyeSize); // right eye
+        ellipse(x + 20, y + 40, eyeSize, eyeSize); // left eye
+
       }
     };
 
