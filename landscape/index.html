@@ -18,8 +18,123 @@
         size(400, 400);
         frameRate(30);
 
+        // landscape drawing
 
+        // colors
+        var skyColor   = color(147, 219, 219);
+        var cloudColor = color(240, 240, 235);
+        var sunColor1  = color(247, 247, 113);
+        var sunColor2  = color(240, 240, 120);
+        var sunColor3  = color(235, 235, 127);
+        var hillColor1 = color(155, 210, 145);
+        var hillColor2 = color(170, 215, 160);
+        var hillColor3 = color(150, 204, 106);
+        var hillColor4 = color(177, 215, 138);
+        var hillColor5 = color(196, 223, 154);
+        var hillColor6 = color(179, 214, 112);
+        var hillColor7 = color(201, 224, 142);
+        var hillColor8 = color(213, 229, 158);
 
+        // position variables
+        var x = 100;
+        var y = 100;
+
+        // sun
+        var sunSize = 70;
+
+        var drawSun = function(sunSizeMultiplier) {
+            ellipse(x + 75, y - 34, sunSizeMultiplier * sunSize, sunSizeMultiplier * sunSize);
+        };
+
+        // clouds
+        var cloudSize = 50;
+
+        var drawCloud = function(cloudX, cloudY) {
+            ellipse(x + cloudX, y + cloudY, cloudSize, cloudSize);
+        };
+
+        // hills
+        var hillSize = 100;
+
+        var drawHill = function(hillX, hillY, hillW, hillH) {
+            ellipse(x + hillX, y + hillY, hillW * hillSize, hillH * hillSize);
+        };
+
+        noStroke();
+
+        var cloudSpeed = 0;
+
+        // draw and animate
+        var draw = function() {
+            // sky
+            background(skyColor);
+
+            // sun
+            // outer ring
+            fill(sunColor1);
+            drawSun(1.4);
+
+            // middle ring
+            fill(sunColor2);
+            drawSun(1);
+
+            // inner ring
+            fill(sunColor3);
+            drawSun(0.6);
+
+            // clouds
+            fill(cloudColor);
+
+            // left cloud
+            drawCloud( 39 - cloudSpeed, -50);
+            drawCloud( 73 - cloudSpeed, -40);
+            drawCloud(  6 - cloudSpeed, -44);
+            drawCloud(-24 - cloudSpeed, -30);
+            drawCloud( 13 - cloudSpeed, -25);
+            drawCloud( 40 - cloudSpeed, -26);
+
+            // right cloud
+            drawCloud(140 + cloudSpeed, -11);
+            drawCloud(169 + cloudSpeed, -22);
+            drawCloud(192 + cloudSpeed,  -5);
+            drawCloud(159 + cloudSpeed,  -1);
+            drawCloud(137 + cloudSpeed,  -1);
+            drawCloud(110 + cloudSpeed,  -5);
+
+            // hills
+            // 1st hill
+            fill(hillColor1);
+            drawHill(-14, 272, 4.66, 2.88);
+
+            fill(hillColor2);
+            drawHill(-15, 310, 4.41, 2.91);
+
+            // 2nd hill
+            fill(hillColor3);
+            drawHill(180, 311, 4.48, 2.85);
+
+            fill(hillColor4);
+            drawHill(178, 350, 4.93, 2.90);
+
+            fill(hillColor5);
+            drawHill(143, 386, 4.49, 2.88);
+
+            // 3rd hill
+            fill(hillColor6);
+            drawHill(-87, 336, 3.25, 2.42);
+
+            fill(hillColor7);
+            drawHill(-111, 337, 3.43, 1.84);
+
+            fill(hillColor8);
+            drawHill(-95, 332, 2.54, 1.17);
+
+            // part clouds
+            cloudSpeed += 0.2;
+
+            // increase size of sun
+            sunSize += 0.3;
+        };
       }
     };
 
