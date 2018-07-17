@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landscape</title>
+  </head>
+  <body>
+    <!-- draw the canvas on the webpage -->
+    <canvas id="mycanvas"></canvas>
+  </body>
+  <!-- include the processing.js library -->
+  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script>
+  <script>
+    var programCode = function(processingInstance) {
+      with (processingInstance) {
+        size(400, 400);
+        frameRate(30);
+
+
+
+      }
+    };
+
+    // get the canvas that ProcessingJS will use
+    var canvas = document.getElementById("mycanvas");
+    // pass the function to ProcessingJS constructor
+    var processingInstance = new Processing(canvas, programCode);
+  </script>
+</html>
