@@ -16,7 +16,45 @@
     var programCode = function(processingInstance) {
       with (processingInstance) {
         size(400, 400);
-        frameRate(30);
+        frameRate(60);
+
+        // this is a program to draw a bouncing ball
+
+        // set position variables
+        var ballX = 200;
+        var ballY = 200;
+
+        // set size of the ball
+        var ballSize = 60;
+
+        // set how far the ball moves every time
+        var speed = 10;
+
+        // set colors
+        var backgroundColor = color(240, 237, 180);
+        var ballColor = color(83, 224, 120);
+
+        noStroke();
+
+        // draw and animate
+        draw = function() {
+
+          // repaint background
+          background(backgroundColor);
+
+          // draw ball
+          fill(ballColor);
+          ellipse(ballX, ballY, ballSize, ballSize);
+
+          // if ball reaches either border flip the speed variable
+          if(ballX + 0.5 * ballSize > 400 || ballX - 0.5 * ballSize < 0) {
+            speed = -speed;
+          }
+
+          // add speed to position
+          ballX += speed;
+
+        };
       }
     };
 
