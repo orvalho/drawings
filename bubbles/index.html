@@ -17,6 +17,42 @@
       with (processingInstance) {
         size(400, 400);
         frameRate(30);
+
+        // this is a program to draw random bubbles on canvas
+
+        // function to draw a bubble
+        // numberOfBubbles - number of bubbles to be drawn
+        var drawBubble = function(numberOfBubbles) {
+
+          // set background color
+          var backgroundColor = color(0, 0, 0);
+          background(backgroundColor);
+
+          // loop to draw multiple bubbles
+          for(var i = 0; i < numberOfBubbles; i++) {
+
+            // set random position
+            var bubbleX = random(0, 400);
+            var bubbleY = random(0, 400);
+
+            // set random size
+            var bubbleSize = random(5, 35);
+
+            noStroke();
+
+            // set random color
+            var bubbleColor = color(random(0, 255), random(0, 255), random(0, 255));
+            fill(bubbleColor);
+
+            // draw bubble
+            ellipse(bubbleX, bubbleY, bubbleSize, bubbleSize);
+
+          }
+       };
+
+        // call drawBubble function to draw specific number of bubbles
+        drawBubble(100);
+
       }
     };
 
