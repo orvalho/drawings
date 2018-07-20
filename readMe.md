@@ -5,3 +5,4 @@ Small drawings, animations made w/ JS & Processing.js
  - [x] [blinking dot](https://codepen.io/o_rvalho/pen/ajZJmB)
  - [x] [bubbles](https://codepen.io/o_rvalho/pen/ZjpeRb)
  - [x] [bouncing ball](https://codepen.io/o_rvalho/pen/GBjvJO)
+ - [x] [smiling face](https://codepen.io/o_rvalho/pen/vayPWY)
