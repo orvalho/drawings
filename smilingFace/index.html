@@ -16,8 +16,134 @@
     var programCode = function(processingInstance) {
       with (processingInstance) {
         size(400, 400);
-        frameRate(60);
+        frameRate(10);
 
+        // Smiling face and hello message
+
+        // positions
+        var x = 200;
+        var y = 200;
+
+        // size
+        var sizeEtalon = 100;
+
+        // colors
+        var backgroundColor = color(139, 227, 215);
+
+        var cheeksColor     = color(235, 170, 170);
+        var lipsColor       = color(61, 55, 61);
+        var eyesColor       = color(61, 55, 61);
+        var eyelashesColor  = color(61, 55, 61);
+
+        var textColorYellow = color(235, 235, 150);
+        var textColorOrange = color(235, 197, 150);
+        var textColorRed    = color(240, 127, 136);
+        var textColorBlue   = color(150, 205, 235);
+        var textColorPurple = color(235, 150, 218);
+
+        var textColors = [textColorYellow,
+                          textColorOrange,
+                          textColorRed,
+                          textColorBlue,
+                          textColorPurple];
+
+        // index of color in an array of colors
+        var colorIndex = 0;
+
+        // cheeks
+        var cheekSize = 0.8 * sizeEtalon;
+
+        var drawCheek = function(cheekX) {
+            noStroke();
+            fill(cheeksColor);
+            ellipse(x - cheekX * sizeEtalon, y + 0.4 * sizeEtalon, cheekSize, cheekSize);
+        };
+
+        // lips
+        var lipsWidth = 0.4 * sizeEtalon;
+        var lipsHeight = 0.45 * lipsWidth;
+        var lipsThickness = 0.1 * sizeEtalon;
+
+        // eyes
+        var eyeWidth = 0.82 * sizeEtalon;
+        var eyeHeight = 0.48 * eyeWidth;
+        var eyesThickness = 0.1 * sizeEtalon;
+
+        var drawEye = function(eyeX) {
+            stroke(eyesColor);
+            strokeWeight(eyesThickness);
+            fill(backgroundColor);
+            arc(x + eyeX * sizeEtalon, y - 0.56 * sizeEtalon, eyeWidth, eyeHeight, 0, PI);
+        };
+
+        // eyelashes
+        var eyelashesThickness = 0.1 * sizeEtalon;
+
+        var drawEyelashes = function(xPos) {
+            stroke(eyelashesColor);
+            strokeWeight(eyelashesThickness);
+            for(var i = 0; i < 4; i++) { // number of eyelashes to be drawn
+                var eyelashX = x - xPos * sizeEtalon + i * 0.2 * sizeEtalon;
+                var eyelashY = y - 0.2 * sizeEtalon;
+                line(eyelashX, eyelashY, eyelashX, eyelashY - 0.17 * sizeEtalon);
+            }
+        };
+
+        // message
+        var greeting = "HELLO";
+        var font = createFont("cursive");
+        var messageSize = 0.3 * sizeEtalon;
+
+        var speed = -5;
+
+
+        // draw and animate
+        draw = function() {
+
+            // clear background
+            background(backgroundColor);
+
+            // message
+            textFont(font);
+            textSize(messageSize);
+            textAlign(CENTER, TOP);
+
+            // message's color - different in each frame
+            if(colorIndex < textColors.length) {
+                fill(textColors[colorIndex]);
+                colorIndex++;
+            } else {
+                colorIndex = 0; // reset colorIndex
+            }
+
+            // change size of message
+            if(messageSize <= 0.3 * sizeEtalon || messageSize >= 0.7 * sizeEtalon) {
+                speed = -speed; // flip
+            }
+
+            messageSize += speed;
+
+            text(greeting, x, y - 1.80 * sizeEtalon);
+
+            // draw cheeks
+            drawCheek(-1.3); // right cheek
+            drawCheek(1.3);  // left cheek
+
+            // draw lips
+            stroke(lipsColor);
+            strokeWeight(lipsThickness);
+            fill(backgroundColor);
+            arc(x, y + 0.3 * sizeEtalon, lipsWidth, lipsHeight, 0, PI);
+
+            // draw eyelashes
+            drawEyelashes(1.30); // left eye
+            drawEyelashes(-0.7); // right eye
+
+            // draw eyes
+            drawEye(-1.01); // left eye
+            drawEye(1.01);  // right eye
+
+        };
       }
     };
 
