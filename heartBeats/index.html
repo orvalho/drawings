@@ -18,6 +18,77 @@
         size(400, 400);
         frameRate(60);
 
+        // this is a program that calculates how many times person's heart beats per 10 minutes
+
+        // positions
+        var x = 200;
+        var y = 200;
+
+        // colors
+        var backgroundColor = color(245, 245, 174);
+        var textColor       = color(52, 204, 224);
+        var heartColor      = color(245, 128, 128);
+
+        // size
+        var sizeEtalon = 100;
+
+        // text
+        var sizeText = 0.5 * sizeEtalon;
+
+        // heart
+        var heartSize = 0.5 * sizeEtalon;
+
+        var drawHeart = function() {
+            noStroke();
+            fill(heartColor);
+
+            // circles
+            var circleX = 0.4;
+            ellipse(x - circleX * heartSize, y, heartSize, heartSize); // left
+            ellipse(x + circleX * heartSize, y, heartSize, heartSize); // right
+
+            // triangle
+            var triangleX = 0.872;
+            var triangleY = 0.2;
+            triangle(x - triangleX * heartSize, y + triangleY * heartSize, x + triangleX * heartSize, y + triangleY * heartSize, x, y + 2.19 * heartSize);
+
+        };
+
+        // set heart beats per minute
+        var heartBeatsPerMinute = 60;
+
+        var calcHeartBeats = function() {
+            var result = heartBeatsPerMinute * 10;
+            return result;
+        };
+
+        var heartBeat = 0;
+
+
+        // draw and animate
+        var draw = function() {
+
+            // clear background
+            background(backgroundColor);
+
+            // text
+            textSize(sizeText);
+            fill(textColor);
+            textAlign(CENTER, CENTER);
+
+            // increase number of heart beats
+            if(heartBeat < calcHeartBeats()) {
+                heartBeat++;
+            } else {
+                heartBeat = calcHeartBeats();
+            }
+
+            text(heartBeat, x, y - 1 * sizeEtalon);
+
+            // draw heart
+            drawHeart();
+
+        };
       }
     };
 
