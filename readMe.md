@@ -6,3 +6,4 @@ Small drawings, animations made w/ JS & Processing.js
  - [x] [bubbles](https://codepen.io/o_rvalho/pen/ZjpeRb)
  - [x] [bouncing ball](https://codepen.io/o_rvalho/pen/GBjvJO)
  - [x] [smiling face](https://codepen.io/o_rvalho/pen/vayPWY)
+ - [x] [heart beats](https://codepen.io/o_rvalho/pen/EpWKKP)
